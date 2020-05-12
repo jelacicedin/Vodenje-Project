@@ -21,9 +21,9 @@ for i = 1:n-1
     tcx1 = tfinal(i)/2 -0.5*sqrt((tfinal(i)^2*ac-4*(x1(i+1)-x1(i)))/ac);
     tcx2 = tfinal(i)/2 -0.5*sqrt((tfinal(i)^2*ac-4*(x2(i+1)-x2(i)))/ac);
     tcx3 = tfinal(i)/2 -0.5*sqrt((tfinal(i)^2*ac-4*(x3(i+1)-x3(i)))/ac);
-    tctheta1 = tfinal(i)/2 -0.5*sqrt((tfinal(i)^2*ac-4*(theta1(i+1)-theta1(i)))/alfac);
-    tctheta2 = tfinal(i)/2 -0.5*sqrt((tfinal(i)^2*ac-4*(theta2(i+1)-theta2(i)))/alfac);
-    tctheta3 = tfinal(i)/2 -0.5*sqrt((tfinal(i)^2*ac-4*(theta3(i+1)-theta3(i)))/alfac);
+    tctheta1 = tfinal(i)/2 -0.5*sqrt((tfinal(i)^2*alfac-4*(theta1(i+1)-theta1(i)))/alfac);
+    tctheta2 = tfinal(i)/2 -0.5*sqrt((tfinal(i)^2*alfac-4*(theta2(i+1)-theta2(i)))/alfac);
+    tctheta3 = tfinal(i)/2 -0.5*sqrt((tfinal(i)^2*alfac-4*(theta3(i+1)-theta3(i)))/alfac);
     
     p1i = x1(i);
     p1f = x1(i+1);
@@ -51,60 +51,60 @@ for i = 1:n-1
         if t<tcx1
             p1 = p1i+0.5*ac*t^2;
         end
-        if t<tfinal(i)&&t>=tcx1
+        if t<(tfinal(i)-tcx1)&&t>=tcx1
             p1 = p1i+ac*tcx1*(t-tcx1/2);
         end
-        if t>tfinal(i)
+        if t>(tfinal(i)-tcx1)
             p1 = p1f-0.5*ac*(t-tfinal(i))^2;
         end
         
         if t<tcx2
             p2 = p2i+0.5*ac*t^2;
         end
-        if t<tfinal(i)&&t>=tcx2
+        if t<(tfinal(i)-tcx2)&&t>=tcx2
             p2 = p2i+ac*tcx2*(t-tcx2/2);
         end
-        if t>tfinal(i)
+        if t>(tfinal(i)-tcx2)
             p2 = p2f-0.5*ac*(t-tfinal(i))^2;
         end
         
         if t<tcx3
             p3 = p3i+0.5*ac*t^2;
         end
-        if t<tfinal(i)&&t>=tcx3
+        if t<(tfinal(i)-tcx3)&&t>=tcx3
             p3 = p3i+ac*tcx3*(t-tcx3/2);
         end
-        if t>tfinal(i)
+        if t>(tfinal(i)-tcx3)
             p3 = p3f-0.5*ac*(t-tfinal(i))^2;
         end
         
         if t<tctheta1
             p4 = p4i+0.5*alfac*t^2;
         end
-        if t<tfinal(i)&&t>=tctheta1
+        if t<(tfinal(i)-tctheta1)&&t>=tctheta1
             p4 = p4i+alfac*tctheta1*(t-tctheta1/2);
         end
-        if t>tfinal(i)
+        if t>(tfinal(i)-tctheta1)
             p4 = p4f-0.5*alfac*(t-tfinal(i))^2;
         end
         
         if t<tctheta2
             p5 = p5i+0.5*alfac*t^2;
         end
-        if t<tfinal(i)&&t>=tctheta1
+        if t<(tfinal(i)-tctheta2)&&t>=tctheta2
             p5 = p5i+alfac*tctheta2*(t-tctheta2/2);
         end
-        if t>tfinal(i)
+        if t>(tfinal(i)-tctheta2)
             p5 = p5f-0.5*alfac*(t-tfinal(i))^2;
         end
         
         if t<tctheta3
             p6 = p6i+0.5*alfac*t^2;
         end
-        if t<tfinal(i)&&t>=tctheta1
+        if t<(tfinal(i)-tctheta3)&&t>=tctheta3
             p6 = p6i+alfac*tctheta3*(t-tctheta3/2);
         end
-        if t>tfinal(i)
+        if t>(tfinal(i)-tctheta3)
             p6 = p6f-0.5*alfac*(t-tfinal(i))^2;
         end
         
