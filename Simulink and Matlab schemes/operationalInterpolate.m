@@ -1,6 +1,6 @@
 function [x,y,z,th1,th2,th3] = operationalInterpolate(X,ac,alfac,tfinal)
 
-n = size(X,2);
+n = size(X,2);                  % number of points assigned
 
 if length(tfinal) == 1
     tfinal = ones(n-1,1)*tfinal;

@@ -18,4 +18,4 @@ hold off
 
 %%
 
-open_system('ControlBlockRobotics.slx')
+%%open_system('ControlBlockRobotics.slx')
